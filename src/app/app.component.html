@@ -10,7 +10,11 @@
       fieldId="name"
       type="text"
       placeholder="Enter your name"
+      [showError]="isError('name')"
     />
+    @if (isError('name')) {
+    <p class="text-sm text-red-500">Name is required</p>
+    }
   </div>
 
   <div>
@@ -21,7 +25,24 @@
       type="email"
       value="ddd"
       placeholder="Enter your email"
+      [showError]="isError('email')"
     />
+    @if (isError('email')) {
+    <p class="text-sm text-red-500">Email is required</p>
+    }
+  </div>
+  <div>
+    <app-label fieldId="tel">Tel</app-label>
+    <app-input
+      formControlName="tel"
+      fieldId="tel"
+      type="tel"
+      placeholder="Enter your tel"
+      [showError]="isError('tel')"
+    />
+    @if (isError('tel')) {
+    <p class="text-sm text-red-500">Tel is required</p>
+    }
   </div>
 
   <div>
@@ -31,7 +52,11 @@
       fieldId="password"
       type="password"
       placeholder="Enter your password"
+      [showError]="isError('password')"
     />
+    @if (isError('password')) {
+    <p class="text-sm text-red-500">Password is required</p>
+    }
   </div>
 
   <div class="">
@@ -43,6 +68,7 @@
         type="radio"
         name="gender"
         value="male"
+        [showError]="isError('gender')"
       />
       <app-label fieldId="male">Male</app-label>
     </div>
@@ -73,6 +99,7 @@
       formControlName="terms_condition"
       fieldId="checkbox"
       type="checkbox"
+      [showError]="isError('terms_condition')"
     />
     <app-label fieldId="checkbox"
       >I’ve read

@@ -7,20 +7,16 @@ import {
   booleanAttribute,
   ChangeDetectionStrategy,
   OnChanges,
-  SimpleChanges,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, UrlTree } from '@angular/router';
 import { cn } from '../../lib/classnames';
-
-type Variant =
-  | 'primary'
-  | 'secondary'
-  | 'destructive'
-  | 'outline'
-  | 'ghost'
-  | 'link';
-type Size = 'default' | 'sm' | 'lg' | 'xl' | 'icon';
+import {
+  ButtonType,
+  LinkTarget,
+  Size,
+  Variant,
+} from '../../interfaces/button.interface';
 
 @Component({
   selector: 'app-button',
@@ -32,12 +28,12 @@ type Size = 'default' | 'sm' | 'lg' | 'xl' | 'icon';
 export class ButtonComponent implements OnChanges {
   @Input() variant!: Variant;
   @Input() size: Size = 'default';
+  @Input() routerLink?: string | string[] | UrlTree | null;
   @Input({ transform: booleanAttribute }) disabled = false;
   @Input({ transform: booleanAttribute, alias: 'loading' }) isLoading = false;
-  @Input() type: 'button' | 'submit' | 'reset' = 'button';
+  @Input() type: ButtonType = 'button';
   @Input() href?: string;
-  @Input() routerLink?: string | string[] | UrlTree | null;
-  @Input() target?: '_blank' | '_self' | '_parent' | '_top';
+  @Input() target: LinkTarget = '_blank';
   @Input() ariaLabel?: string;
   @Input() label?: string;
   @Input() btnClass? = '';
@@ -57,11 +53,15 @@ export class ButtonComponent implements OnChanges {
   @HostListener('keydown.enter', ['$event'])
   @HostListener('keydown.space', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    if (this.disabled || (this.isLoading && !(this.href || this.routerLink))) {
+    if (this.isDisabledOrLoading && !(this.href || this.routerLink)) {
       event.preventDefault();
       return;
     }
     this.btnClick.emit();
+  }
+
+  get isDisabledOrLoading(): boolean {
+    return this.disabled || this.isLoading;
   }
 
   get computedClasses(): string {
@@ -99,21 +99,21 @@ export class ButtonComponent implements OnChanges {
   }
 
   onClick() {
-    if (this.disabled || this.isLoading) {
+    if (this.isDisabledOrLoading) {
       return;
     }
     this.btnClick.emit();
   }
 
   onFocus() {
-    if (this.disabled || this.isLoading) {
+    if (this.isDisabledOrLoading) {
       return;
     }
     this.focus.emit();
   }
 
   onBlur() {
-    if (this.disabled || this.isLoading) {
+    if (this.isDisabledOrLoading) {
       return;
     }
     this.blur.emit();

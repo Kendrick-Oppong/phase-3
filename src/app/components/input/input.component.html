@@ -2,8 +2,14 @@
   [id]="fieldId"
   [type]="type"
   [name]="name"
-  [value]="value"
-  [checked]="type === 'checkbox' ? !!value : type === 'radio' ? value === this.value : null"
+  [value]="type === 'radio' ? value : selectedValue"
+  [checked]="
+    type === 'checkbox'
+      ? !!selectedValue
+      : type === 'radio'
+      ? selectedValue === value
+      : null
+  "
   [placeholder]="type !== 'checkbox' && type !== 'radio' ? placeholder : ''"
   [disabled]="disabled"
   [attr.aria-label]="ariaLabel"
