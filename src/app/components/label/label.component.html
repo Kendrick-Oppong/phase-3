@@ -1,0 +1,93 @@
+<div class="flex flex-col gap-4 p-12">
+    <!-- Primary button -->
+    <app-button variant="primary" (click)="handleClick($event)"
+      >Primary</app-button
+    ><app-button size="lg" variant="primary" (click)="handleClick($event)"
+      >Primary LG</app-button
+    >
+  
+    <!-- Secondary button -->
+    <app-button variant="secondary" size="sm">Secondary SM</app-button>
+    <app-button variant="secondary" size="lg">Secondary LG</app-button>
+  
+    <!-- Destructive button -->
+    <app-button variant="destructive" size="lg" (btnClick)="handleClick($event)">
+      Destructive</app-button
+    >
+  
+    <!-- Outline button -->
+    <app-button size="lg" variant="outline" btnClass="w-[200px]"
+      >Outline</app-button
+    >
+  
+    <!-- Ghost button -->
+    <app-button variant="ghost">Ghost</app-button>
+  
+    <!-- Link button -->
+    <app-button variant="link" href="https://example.com">Link</app-button>
+  
+    <!-- RouterLink button -->
+    <app-button
+      variant="primary"
+      href="https://example.com"
+      routerLink="dashboard"
+      ><p>Go to Dashboard</p></app-button
+    >
+  
+    <!-- Icon-only button -->
+    <app-button variant="outline" size="icon" ariaLabel="Search">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      </svg>
+    </app-button>
+  
+    <!-- Button with icon and text -->
+    <app-button size="lg" variant="primary">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M5 12h14" />
+        <path d="M12 5v14" />
+      </svg>
+      Add
+    </app-button>
+  
+    <!-- Loading button -->
+    <app-button size="lg" loading>
+      <span aria-hidden="true" class="w-4 h-4 mr-2 text-green-500 animate-spin">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+        </svg>
+      </span>
+      Loading</app-button
+    >
+  </div>

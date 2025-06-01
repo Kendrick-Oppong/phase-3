@@ -1,0 +1,15 @@
+<input
+  [id]="fieldId"
+  [type]="type"
+  [name]="name"
+  [value]="value"
+  [checked]="type === 'checkbox' ? !!value : type === 'radio' ? value === this.value : null"
+  [placeholder]="type !== 'checkbox' && type !== 'radio' ? placeholder : ''"
+  [disabled]="disabled"
+  [attr.aria-label]="ariaLabel"
+  [attr.id]="fieldId"
+  [class]="computedClasses"
+  (change)="onInput($event)"
+  (focus)="onFocus($event)"
+  (blur)="onBlur($event)"
+/>

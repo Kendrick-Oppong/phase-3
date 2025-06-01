@@ -1,0 +1,42 @@
+@if (routerLink) {
+<a
+  [routerLink]="disabled ? null : routerLink"
+  [attr.aria-disabled]="disabled"
+  [attr.tabindex]="disabled ? -1 : 0"
+  [attr.aria-label]="ariaLabel || label || 'Link'"
+  [class]="computedClasses"
+>
+  <ng-container *ngTemplateOutlet="projectContent"></ng-container>
+</a>
+} @else if (href) {
+<a
+  [href]="disabled ? null : href"
+  [attr.target]="target"
+  [attr.rel]="target === '_blank' ? 'noopener noreferrer' : null"
+  [attr.aria-disabled]="disabled"
+  [attr.tabindex]="disabled ? -1 : 0"
+  [attr.aria-label]="ariaLabel || label || 'Link'"
+  [class]="computedClasses"
+>
+  <ng-container *ngTemplateOutlet="projectContent"></ng-container>
+</a>
+} @else {
+<button
+  [type]="type"
+  [disabled]="disabled || isLoading"
+  [attr.aria-disabled]="disabled || isLoading"
+  [attr.aria-label]="ariaLabel || (isLoading ? 'Loading' : label || 'Button')"
+  [class]="computedClasses"
+  (click)="onClick()"
+  (focus)="onFocus()"
+  (blur)="onBlur()"
+>
+ 
+  
+  <ng-container *ngTemplateOutlet="projectContent"></ng-container>
+</button>
+}
+
+<ng-template #projectContent>
+  <ng-content />
+</ng-template>
