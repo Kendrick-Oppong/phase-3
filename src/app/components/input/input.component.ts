@@ -5,9 +5,7 @@ import {
   EventEmitter,
   HostListener,
   booleanAttribute,
-  ChangeDetectionStrategy,
   forwardRef,
-  ChangeDetectorRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
@@ -24,6 +22,9 @@ type InputType =
   | 'password'
   | 'email'
   | 'number'
+  | 'tel'
+  | 'url'
+  | 'search'
   | 'checkbox'
   | 'radio';
 
@@ -33,7 +34,6 @@ type InputType =
   imports: [CommonModule, FormsModule],
   templateUrl: './input.component.html',
   providers: [
-  
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => InputComponent),
@@ -59,8 +59,6 @@ export class InputComponent implements ControlValueAccessor {
 
   private onChange: (value: string | number | boolean) => void = () => {};
   private onTouched: () => void = () => {};
-
-  constructor(private cdr: ChangeDetectorRef) {}
 
   @HostListener('keydown.enter', ['$event'])
   handleEnterKey(event: KeyboardEvent) {
@@ -124,8 +122,6 @@ export class InputComponent implements ControlValueAccessor {
   writeValue(value: string | number | boolean): void {
     this.value = value;
     console.log('writeValue called with:', value); // Add debugging
-    this.cdr.markForCheck();
-
   }
 
   registerOnChange(fn: (value: string | number | boolean) => void): void {
@@ -162,7 +158,6 @@ export class InputComponent implements ControlValueAccessor {
     if (this.type !== 'radio' || inputElement.checked) {
       this.onChange(this.value!);
       this.inputChange.emit(this.value);
-      this.cdr.markForCheck(); // Ensure UI updates
     }
   }
 
