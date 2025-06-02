@@ -26,7 +26,7 @@ import {
   templateUrl: './button.component.html',
 })
 export class ButtonComponent implements OnChanges {
-  @Input() buttonVariant!: ButtonVariant;
+  @Input() variant!: ButtonVariant;
   @Input() size: Size = 'default';
   @Input() routerLink?: string | string[] | UrlTree | null;
   @Input({ transform: booleanAttribute }) disabled = false;
@@ -67,7 +67,7 @@ export class ButtonComponent implements OnChanges {
   get computedClasses(): string {
     const baseClasses =
       'inline-flex px-2.5 gap-3 py-3 items-center justify-center rounded-lg text-base font-normal transition-colors focus:outline-none';
-    const buttonVariantClasses: Record<ButtonVariant, string> = {
+    const variantClasses: Record<ButtonVariant, string> = {
       primary:
         'bg-primary-500 text-base-white-50 hover:bg-primary-600 focus:ring-2 focus:ring-primary-500 focus:ring-offset-1',
       secondary:
@@ -89,8 +89,10 @@ export class ButtonComponent implements OnChanges {
 
     return cn(
       baseClasses,
-      buttonVariantClasses[this.buttonVariant],
-      this.buttonVariant !== 'link' ? sizeClasses[this.size] : sizeClasses.default,
+      variantClasses[this.variant],
+      this.variant !== 'link'
+        ? sizeClasses[this.size]
+        : sizeClasses.default,
       this.disabled || (this.isLoading && !(this.href || this.routerLink))
         ? 'cursor-not-allowed bg-primary-50 text-primary-100'
         : null,

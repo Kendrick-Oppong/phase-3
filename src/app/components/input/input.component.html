@@ -3,7 +3,7 @@
   [type]="type"
   [name]="name"
   [value]="type === 'radio' ? value : selectedValue"
-  [checked]="isChecked"
+  [checked]="isChecked()"
   [placeholder]="type !== 'checkbox' && type !== 'radio' ? placeholder : ''"
   [disabled]="disabled"
   [attr.aria-label]="ariaLabel"

@@ -42,7 +42,7 @@ export class AppComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       gender: ['', Validators.required],
-      terms_condition: ["", Validators.requiredTrue],
+      terms_condition: [''],
     });
   }
 
