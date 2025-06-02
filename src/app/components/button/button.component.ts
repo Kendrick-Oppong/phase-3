@@ -71,7 +71,7 @@ export class ButtonComponent implements OnChanges {
       primary:
         'bg-primary-500 text-base-white-50 hover:bg-primary-600 focus:ring-2 focus:ring-primary-500 focus:ring-offset-1',
       secondary:
-        'border-2 border-grey-400 text-grey-400 hover:bg-grey-100 focus:ring-0 focus:ring-grey-400 focus:ring-offset-0',
+        'border-2 border-grey-400 text-grey-400 focus:ring-0 focus:ring-grey-400 focus:ring-offset-0',
       destructive:
         'bg-red-600 text-grey-50 hover:bg-red-500 focus:ring-2 focus:ring-red-600 focus:ring-offset-1',
       outline:

@@ -2,6 +2,85 @@
   Hello world!
 </h1>
 
+<div class="flex flex-col gap-4 p-4">
+  <app-button type="button" size="xl" variant="primary">
+    Primary XL
+  </app-button>
+  <app-button type="button" size="xl" variant="primary">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="lucide lucide-alarm-clock-check-icon lucide-alarm-clock-check"
+    >
+      <circle cx="12" cy="13" r="8" />
+      <path d="M5 3 2 6" />
+      <path d="m22 6-3-3" />
+      <path d="M6.38 18.7 4 21" />
+      <path d="M17.64 18.67 20 21" />
+      <path d="m9 13 2 2 4-4" />
+    </svg>
+    Primary with Icon
+  </app-button>
+  <app-button type="button" size="xl" variant="destructive">
+    Destructive XL
+  </app-button>
+  <app-button size="icon">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="lucide lucide-angry-icon lucide-angry"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="M16 16s-1.5-2-4-2-4 2-4 2" />
+      <path d="M7.5 8 10 9" />
+      <path d="m14 9 2.5-1" />
+      <path d="M9 10h.01" />
+      <path d="M15 10h.01" />
+    </svg>
+  </app-button>
+  <app-button size="icon" variant="outline">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="lucide lucide-angry-icon lucide-angry"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="M16 16s-1.5-2-4-2-4 2-4 2" />
+      <path d="M7.5 8 10 9" />
+      <path d="m14 9 2.5-1" />
+      <path d="M9 10h.01" />
+      <path d="M15 10h.01" />
+    </svg>
+  </app-button>
+  <app-button size="lg" variant="outline"> Outline LG </app-button>
+  <app-button href="example.com" size="lg" variant="link"> Twitter </app-button>
+  <app-button routerLink="home" size="lg" variant="outline">
+    Outline LG
+  </app-button>
+  <app-button size="lg" variant="ghost"> Ghost LG </app-button>
+  <app-button size="lg" variant="secondary"> Secondary LG </app-button>
+</div>
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="mx-10 space-y-4">
   <div>
     <app-label fieldId="name">Name</app-label>
