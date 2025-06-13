@@ -8,7 +8,6 @@ import {
   ChangeDetectionStrategy,
   OnChanges,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterLink, UrlTree } from '@angular/router';
 import { cn } from '../../lib/classnames';
 import {
@@ -21,7 +20,7 @@ import {
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './button.component.html',
 })
@@ -90,9 +89,7 @@ export class ButtonComponent implements OnChanges {
     return cn(
       baseClasses,
       variantClasses[this.variant],
-      this.variant !== 'link'
-        ? sizeClasses[this.size]
-        : sizeClasses.default,
+      this.variant !== 'link' ? sizeClasses[this.size] : sizeClasses.default,
       this.disabled || (this.isLoading && !(this.href || this.routerLink))
         ? 'cursor-not-allowed bg-primary-50 text-primary-100'
         : null,

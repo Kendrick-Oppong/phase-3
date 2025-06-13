@@ -1,4 +1,4 @@
-import { booleanAttribute, Component, inject, OnInit } from '@angular/core';
+import { booleanAttribute, Component, inject, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ButtonComponent } from './components/button/button.component';
 import { InputComponent } from './components/input/input.component';
@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { LabelComponent } from './components/label/label.component';
 import { CommonModule } from '@angular/common';
+import { DialogComponent } from "./components/dialog/dialog.component";
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,8 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     LabelComponent,
     CommonModule,
-  ],
+    DialogComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -58,5 +60,19 @@ export class AppComponent {
     } else {
       console.log('Form is invalid', this.userForm.value);
     }
+  }
+
+  public isDialogOpen = signal(false);
+
+  public openDialog(): void {
+    this.isDialogOpen.set(true);
+  }
+
+  public onConfirm(): void {
+    this.isDialogOpen.set(false);
+  }
+
+  public onClose(): void {
+    this.isDialogOpen.set(false);
   }
 }
